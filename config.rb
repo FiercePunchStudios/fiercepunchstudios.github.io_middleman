@@ -69,7 +69,7 @@ activate :livereload
 
 activate :deploy do |deploy|
   deploy.method = :git
-  # deploy.remote   = 'https://github.com/FiercePunchStudios/fiercepunchstudios.github.io.git'
+  deploy.strategy = :submodule
   deploy.remote   = 'https://github.com/FiercePunchStudios/deploy-test.git'
   deploy.branch   = 'master'
 end
