@@ -69,7 +69,6 @@ activate :livereload
 
 activate :deploy do |deploy|
   deploy.method = :git
-  deploy.strategy = :submodule
   deploy.remote   = 'https://github.com/FiercePunchStudios/deploy-test.git'
   deploy.branch   = 'master'
 end
