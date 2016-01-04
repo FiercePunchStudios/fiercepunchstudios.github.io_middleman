@@ -1,31 +1,60 @@
 @import "settings";
 @import "foundation.scss";
 
+// color palette
+// moved to _settings.scss
 
-header {
-  @include grid-row;
+$shadow-main: 0.2rem 0.1rem 0.5rem black;
 
-  .logo  { @include grid-column($columns:3, $center:true); }
-  padding-bottom: em-calc(10px);
-
+body {
+  background: $body-bg-color;
+  font-family: Helvetica, Arial, sans-serif;
+  color: $color-text-dark;
+  text-align: center;
 }
 
+#container-row {
+  @include grid-row();
+  width: 100%;
+  background: $color-text-light;
+  border-radius: 1rem;
 
-.main-content {
-  @include grid-row;
-
-  aside  {
-    @include grid-column($columns:6);
-    // @media #{$medium-up} {
-    //   @include grid-column($columns:3);
-    // }
+  @media #{$medium-up} {
+    width: 80rem;
+    margin-top: 1.5rem;
+    box-shadow: $shadow-main;
   }
+}
 
-  article  {
-    @include grid-column($columns:6);
-    // @media #{$medium-up} {
-    //   @include grid-column($columns:8, $offset: 1);
-    // }
+#container-column {
+  @include grid-column($columns: 12, $center: true, $collapse: true);
+  padding: 0.5rem;
+}
+
+#sitehead {
+  @include grid-row();
+  #logo-wrapper { @include grid-column($columns: 4, $collapse: true, $float: left); }
+  #navlinks { @include grid-column($columns: 8, $collapse: true, $float: right); }
+  // margin: 1rem auto;
+}
+
+#logo-wrapper > * { display: inline-block; }
+#logo {
+  max-height: 4.3rem;
+  float: left;
+}
+#title {
+  text-align: right;
+  line-height: 0.85;
+  float: left;
+}
+
+#navlinks {
+  ul {
+    @include button-group-container();
+    li {
+      @include button-group-style($radius: 10rem);
+      a { @include button($padding: $button-sml); }
+    }
   }
-
 }

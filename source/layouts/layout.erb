@@ -1,18 +1,25 @@
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Use title if it's in the page YAML frontmatter -->
-    <title><%= data.page.title || "The Middleman" %></title>
-    
-    <%= stylesheet_link_tag "app", "style" %>
-    <%= javascript_include_tag "modernizr" %>
-  </head>
-  
-  <body class="<%= page_classes %>">
-    <%= yield %>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title><%= ["Fierce Punch Studios", data.page.title].compact.join(' | ') %></title>
 
-    <%= javascript_include_tag  "all" %>
-  </body>
+  <%= stylesheet_link_tag "app", "style" %>
+  <%= javascript_include_tag "modernizr" %>
+  <!-- <%= favicon_tag 'images/favicon.png' %> -->
+</head>
+
+<body class="<%= page_classes %>">
+  <div id="container-row">
+    <div id="container-column">
+      <%= partial 'partials/header' %>
+      <main>
+        <%= yield %>
+      </main>
+    </div>
+  </div>
+  <%= javascript_include_tag  "all" %>
+</body>
 </html>
