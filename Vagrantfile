@@ -32,4 +32,5 @@ Vagrant.configure(2) do |config|
   MIDDLEMAN
 
   config.vm.network "forwarded_port", guest: 4567, host: 4567
+  config.vm.network "forwarded_port", guest: 35729, host: 35729
 end
