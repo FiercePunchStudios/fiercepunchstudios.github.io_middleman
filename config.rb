@@ -2,6 +2,17 @@
 # Compass
 ###
 
+# middleman-deploy requires fix referenced here: https://github.com/middleman-contrib/middleman-deploy/issues/114#issuecomment-168139237
+class BuildCleaner < Middleman::Extension
+  def initialize(app, options_hash={}, &block)
+    super
+    FileUtils.rm_rf app.config[:build_dir]
+  end
+end
+
+::Middleman::Extensions.register(:build_cleaner, BuildCleaner)
+# End middleman-deploy fix
+
 compass_config do |config|
   # Require any additional compass plugins here.
   config.add_import_path "bower_components/foundation/scss"
@@ -69,16 +80,25 @@ activate :livereload
 
 activate :deploy do |deploy|
   deploy.method = :git
-  deploy.remote   = 'https://github.com/FiercePunchStudios/deploy-test.git'
+  deploy.remote   = 'https://github.com/FiercePunchStudios/fiercepunchstudios.github.io.git'
   deploy.branch   = 'master'
 end
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def is_current?(url)
+    return url == current_page.url if url == '/'
+
+    return Regexp.new(url) =~ current_page.url
+  end
+
+  def nav_link(link_text, url, options = {})
+    return link_to(link_text, url, options) unless is_current?(url)
+
+    options[:class] = [options[:class], 'current'].compact.join(' ')
+    return content_tag(:span, link_text, options)
+  end
+end
 
 # Add bower's directory to sprockets asset path
 after_configuration do
@@ -108,4 +128,6 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+
+  activate :build_cleaner
 end

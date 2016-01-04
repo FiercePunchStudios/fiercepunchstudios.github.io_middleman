@@ -4,13 +4,9 @@ source 'http://rubygems.org'
 
 gem "middleman", "~> 3.4.0"
 
-gem 'middleman-deploy', '~> 1.0'
+gem 'middleman-deploy', '~> 1.0' # Requires fix referenced here: https://github.com/middleman-contrib/middleman-deploy/issues/114#issuecomment-168139237
 
-# Live-reloading plugin
-gem "middleman-livereload"
-
-# For faster file watcher updates on Windows:
-gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
+gem "middleman-livereload" # Live-reloading plugin
 
 # Cross-templating language block fix for Ruby 1.8
 platforms :mri_18 do
