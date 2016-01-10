@@ -1,10 +1,8 @@
 @import "settings";
 @import "foundation.scss";
+@import "fps_toolbox";
 
-// color palette
-// moved to _settings.scss
-
-$shadow-main: 0.2rem 0.1rem 0.5rem black;
+// color palette moved to _settings.scss
 
 body {
   background: $body-bg-color;
@@ -16,45 +14,73 @@ body {
 #container-row {
   @include grid-row();
   width: 100%;
-  background: $color-text-light;
-  border-radius: 1rem;
 
   @media #{$medium-up} {
     width: 80rem;
-    margin-top: 1.5rem;
-    box-shadow: $shadow-main;
+    margin-top: 1rem;
+  }
+
+  #container-column {
+    @include grid-column($columns: 12, $center: true, $collapse: true);
   }
 }
 
-#container-column {
-  @include grid-column($columns: 12, $center: true, $collapse: true);
-  padding: 0.5rem;
+#main-card {
+  background-color: $color-text-light;
+  border-radius: 1rem;
+  box-shadow: $shadow-main;
+  // @include box();
 }
 
 #sitehead {
   @include grid-row();
-  #logo-wrapper { @include grid-column($columns: 4, $collapse: true, $float: left); }
-  #navlinks { @include grid-column($columns: 8, $collapse: true, $float: right); }
-  // margin: 1rem auto;
-}
+  #logo-wrapper { @include grid-column($columns: 4, $collapse: true); }
+  #navlinks { @include grid-column($columns: 8, $collapse: true); }
 
-#logo-wrapper > * { display: inline-block; }
-#logo {
-  max-height: 4.3rem;
-  float: left;
-}
-#title {
-  text-align: right;
-  line-height: 0.85;
-  float: left;
+  display: inline-flex;
+  align-items: flex-end;
+  margin-bottom: 1rem;
 }
 
 #navlinks {
   ul {
+    text-align: right;
     @include button-group-container();
     li {
-      @include button-group-style($radius: 10rem);
-      a { @include button($padding: $button-sml); }
+      @include button-group-style();
+      a {
+        @include button($padding: $button-sml);
+        margin: 0;
+      }
     }
   }
+}
+
+li > a {
+  background-color: $primary-color;
+}
+
+#logo-wrapper {
+  text-align: left;
+  a {
+    @include gel_btn(hsl(215deg, 0%, 55%));
+    padding: 0.5rem 2rem;
+    margin: 0;
+
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+#logo {
+  max-height: 3.2rem;
+}
+
+#title {
+  text-align: right;
+  line-height: 0.90;
+  font-size: 1.2rem;
+  display: inline-block;
+  color: $color-text-light;
+  margin: 0 0.2rem 0 0;
 }

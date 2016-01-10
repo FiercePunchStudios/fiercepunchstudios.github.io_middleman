@@ -1,9 +1,17 @@
-<header id="sitehead" class="hide-for-small">
+<header id="sitehead">
   <div id="logo-wrapper">
-      <a href="/">
-        <h3 id="title">Fierce<br/>Punch<br/>Studios</h3>
-        <%= image_tag('fiercepunchicon_128.png', id: 'logo') %>
-      </a>
+    <a href="/">
+      <h3 id="title">Fierce<br/>Punch<br/>Studios</h3>
+      <%= image_tag('fiercepunchicon_128.png', id: 'logo') %>
+    </a>
   </div>
-  <%= partial "partials/navlinks" %>
+  <nav id="navlinks">
+    <ul>
+      <li><%= nav_link('Home', 'index.html', class: 'btn small') %></li>
+      <li><%= nav_link('Consulting', 'consulting.html', class: 'btn small') %></li>
+      <li><%= nav_link('Games', 'games.html', class: 'btn small') %></li>
+      <li><%= nav_link('Contact', 'contact.html', class: 'btn small') %></li>
+    </ul>
+  </nav>
+  <!-- <%= partial "partials/navlinks" %> -->
 </header>
