@@ -16,7 +16,7 @@ body {
   width: 100%;
 
   @media #{$medium-up} {
-    width: 80rem;
+    width: 55rem;
     margin-top: 1rem;
   }
 
@@ -25,67 +25,23 @@ body {
   }
 }
 
+#sitehead {
+  @include grid-row();
+  #navlinks { @include grid-column($columns: 12, $collapse: true); }
+}
+
 #main-card {
   background-color: $color-text-light;
-  border-radius: 1rem;
+  // border-radius: 1rem;
   box-shadow: $shadow-main;
   padding: 0.5rem 1rem;
   text-align: left;
   // @include box();
 }
 
-h1, h2 {
-  text-align: center;
-}
+h1, h2 { text-align: center; }
 
-
-#sitehead {
-  @include grid-row();
-  #logo-wrapper { @include grid-column($columns: 4, $collapse: true); }
-  #navlinks { @include grid-column($columns: 8, $collapse: true); }
-
-  display: inline-flex;
-  align-items: flex-end;
-  margin-bottom: 1rem;
-}
-
-#navlinks {
-  ul {
-    text-align: right;
-    @include button-group-container();
-    li {
-      @include button-group-style();
-      & > .btn {
-        @include button($padding: $button-sml);
-        margin: 0;
-      }
-
-      & > .current {
-
-      }
-    }
-  }
-}
-
-li > a {
-  background-color: $primary-color;
-}
-
-#logo-wrapper {
-  text-align: left;
-  a {
-    @include gel_btn(hsl(215deg, 0%, 55%));
-    padding: 0.5rem 2rem;
-    margin: 0;
-
-    display: inline-flex;
-    align-items: center;
-  }
-}
-
-#logo {
-  max-height: 3.2rem;
-}
+#logo { max-height: 3.4rem; }
 
 #title {
   text-align: right;
@@ -93,13 +49,36 @@ li > a {
   font-size: 1.2rem;
   display: inline-block;
   color: $color-text-light;
-  margin: 0 0.2rem 0 0;
+  // margin: 0 0.2rem 0 0;
+  margin: 0;
 }
 
-#twitter-wrapper {
-  // display: table;
-  // margin-left: auto; margin-right: auto;
-  text-align: center;
-}
-
+#twitter-wrapper { text-align: center; }
 .contacts { margin-left: auto; margin-right: auto; }
+
+$link-padding-top: 0.7rem;
+$nav-margin-top: 2rem;
+$nav-height: 2rem + $link-padding-top;
+$nav-belt-color: rgb(161, 161, 161);
+// $nav-belt-color: shade(silver, 15%);
+#sitehead { margin: 0.5rem 0 2.5rem 0; }
+#navbelt { @include nav_belt($shadow-main); }
+// #navbelt ul { @include metallic($nav-belt-color); }
+#navbelt ul { @include metallic($nav-belt-color); }
+#navbelt ul a,
+#navbelt ul .belt-btn {
+  padding: $link-padding-top 1rem;
+  min-width: 6rem;
+  color: white;
+  font-size: larger;
+}
+#navbelt ul a.belt-btn { @include metallic($nav-belt-color); }
+#navbelt .buckle {
+  @include metallic($nav-belt-color, $curved: true);
+  h3, img { vertical-align: middle; }
+}
+#navbelt ul a.belt-btn:hover,
+#navbelt .buckle:hover {
+  box-shadow: 0rem 0.2rem 0.2rem white,
+    0rem -0.2rem 0.2rem white;
+}
