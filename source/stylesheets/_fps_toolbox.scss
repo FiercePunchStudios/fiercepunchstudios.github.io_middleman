@@ -1,10 +1,20 @@
+@function contrast-color($bg-color, $dark: black, $light: white, $threshold: 50%) {
+  // for use when compass isn't available
+  @return if(lightness($bg-color) > $threshold, $dark, $light);
+}
+
+@function shadow-levitate($color: black) {
+  // Gives font subtle outline
+  @return 0 0 0.1rem $color;
+}
+
 @mixin box($bgcolor:$color-text-light, $shadow: 0.1rem 0.1rem 0.1rem black) {
   background: $color-text-light;
   border-radius: 1rem;
   box-shadow: $shadow;
 }
 
-@mixin btn($shadow) {
+@mixin pill($shadow) {
   // @include box();
   border-radius: 10rem;
   display: inline-block;
@@ -13,7 +23,7 @@
   box-shadow: $shadow;
 }
 
-@mixin translucent(
+@mixin translucent_gradient(
   $color-base,
   $invert:null,
   $color-low:scale-color(adjust-color($color-base, $hue:15deg), $saturation: 30%, $lightness:-30%),
@@ -25,121 +35,79 @@
   background: linear-gradient($direction, $color-high, $color-high 10%, $color-mid 30%, $color-low 70%);
 }
 
-@mixin gel($color-base, $color-text:white) {
+@mixin gel_gradient($color-base, $color-text:white) {
   $color-text-shadow: tint($color-base, 10%);
   $color-hover-text-shadow: $color-text;
 
-  @include translucent($color-base);
+  @include translucent_gradient($color-base);
   // color: $color-text;
   box-shadow: inset 0 0 0.5rem $color-base;
   text-shadow: 1px 1px 1px $color-text-shadow, -1px -1px 1px $color-text-shadow;
 
-  // &, &:hover, &:active { color: $color-text; }
-  // &:hover { color: shade($color-base, 30%); text-shadow: -1px -1px 1px $color-text, 1px 1px 1px $color-text; }
   &, &:hover, &:active { color: $color-text; }
   &:hover {
     @include translucent(tint($color-base, 30%));
     box-shadow: 0 0 0.3rem $color-base, inset 0 0 0.5rem $color-base;
   }
-  // &:hover { @include translucent(tint($color-base, 30%)); }
   &:active { @include translucent($color-base, true); }
 }
 
 @mixin gel_btn($color-base, $text-color:white, $shadow:0.1rem 0.1rem 0.2rem #222233) {
   @include btn($shadow);
-  @include gel($color-base);
+  @include gel_gradient($color-base);
   box-shadow: inset 0 0 0.5rem $color-base, $shadow;   // must redo box-shadow, since declarations replace instead of append.
 }
 
-// @mixin etched-text($base-color) { //   //Should look like darker $base-color with shadow as highlight // }
-// @mixin glow-border() {}
-// @mixin glow-text() {}
-
-@mixin nav_belt($shadow: none) {
-  // $link-padding-top: 0.7rem;
-  // $nav-margin-top: 2rem;
-  // $nav-height: 2rem + $link-padding-top;
-
-  margin: 0;
-  height: $nav-height;
-  & > ul {
-    margin: 0;
-    box-shadow: $shadow;
+@mixin nav-bar($height: 3rem) {
+  //http://codepen.io/imohkay/pen/gpard
+  // top level assumed to be <nav>
+  ul {
+    display: flex;
+    li { flex: 1; }
   }
-  & > ul > li { display: inline-block; }
 
+  & > ul > li,
   & > ul > li > a,
   & > ul > li > span {
-    // padding: $link-padding-top 1rem;
     display: inline-block;
-    // min-width: 6rem;
   }
 
-  & > ul > li > a.buckle {
-    margin: -10rem 1.5rem;
-    padding: 0.8rem 1.5rem;
+  & > ul { margin: 0; }
+
+  &,
+  & > ul,
+  & > ul > li,
+  & > ul > li > * {
+    height: $height;
+    line-height: $height; // required to vertically center text within navbar
+  }
+
+  & > ul > li > * { width: 100%; }
+}
+
+@mixin nav-belt($shadow: none) {
+  @include nav-bar();
+
+  & > ul { box-shadow: $shadow; }
+
+  & > ul > li > .belt-buckle {
+    margin-top: -10rem; margin-bottom: -10rem;
     border-radius: 10rem;
-    min-width: 9rem;
     box-shadow: $shadow;
+
+    & > * { vertical-align: middle; }
   }
 }
 
-/////////////////////////////////////////////////
-// Bubble Wrap Metal Bar
-// http://cssmenumaker.com/menu/bubble-wrap-horizontal-menu-bar
-@function metallic-gradient($color, $direction:"to top") {
-  @return unquote($direction),
-  shade($color, 50%) 0%,
-  shade($color, 40%) 50%,
-  shade($color, 30%) 51%,
-  shade($color, 31%) 78%,
-  $color 100%;
-
-  // shade($color, 20%) 0%,
-  // shade($color, 10%) 50%,
-  // shade($color, 0%) 51%,
-  // shade($color, 1%) 78%,
-  // tint($color, 30%) 100%;
-}
-
-@mixin old-metallic($bg-color, $curved:null, $edges:null, $link-color:white) {
-  background: $bg-color;
-  background: metallic-gradient($bg-color);
-
-  @if $curved {
-    position: relative;  // to align ::after
-    z-index: 1;
-
-    $bg-shadow-color: shade($bg-color, 40%);
-    $bg-shadow-gradient: linear-gradient(to top, $bg-shadow-color 0%, shade($bg-shadow-color, 4%) 100%);
-
-    &:after {
-      content: "";
-      width: 100%;
-      height: 0.7rem;
-      position: absolute;
-      border-top-left-radius: 30% 0.4rem;
-      border-top-right-radius: 30% 0.4rem;
-      background: $bg-shadow-gradient;
-      z-index: -1;
-      bottom: 45%;
-      left: 0;
-    }
-  }
-}
 @mixin metallic($bg-color, $curved:null, $edges:null, $link-color:white) {
-  //assume base color is at mark 51%
-  $color-shadow: shade($bg-color, 28.5%);
-  $color-light: tint($bg-color, 73%);
-
+  // Inspired by http://cssmenumaker.com/menu/bubble-wrap-horizontal-menu-bar
   $bg-gradient: to top,
-  scale-color($bg-color, $lightness: -28.5%) 0%,  //115
-  scale-color($bg-color, $lightness: -14%) 50%,   //138
-  scale-color($bg-color, $lightness: 0%) 51%,     //161
-  scale-color($bg-color, $lightness: -1%) 78%,    //159
-  scale-color($bg-color, $lightness: 73%) 100%;   //230
+  scale-color($bg-color, $lightness: -28.5%) 0%,
+  scale-color($bg-color, $lightness: -14%) 50%,
+  scale-color($bg-color, $lightness: 0%) 51%, // base color
+  scale-color($bg-color, $lightness: -1%) 78%,
+  scale-color($bg-color, $lightness: 73%) 100%;
 
-  // background goes on ul and a elements
   background: $bg-color;
   background: linear-gradient($bg-gradient);
 
@@ -150,16 +118,35 @@
     &:after {
       content: "";
       width: 100%;
-      height: 0.7rem;
+      height: 10%;
       position: absolute;
-      border-top-left-radius: 30% 0.4rem;
-      border-top-right-radius: 30% 0.4rem;
+      border-top-left-radius: 25% 95%;
+      border-top-right-radius: 25% 95%;
       background: linear-gradient(to top,
-        scale-color($bg-color, $lightness: -14%) 0%, //138
-        scale-color($bg-color, $lightness: -10%) 100%); //132
+        scale-color($bg-color, $lightness: -14%) 0%, // dark color below midline
+        scale-color($bg-color, $lightness: -10%) 100%);
       z-index: -1;
-      bottom: 45%;
+      bottom: 50%;
       left: 0;
     }
   }
+}
+
+@mixin frosted-glass($color, $bg-alpha:0.25, $shadow-alpha: $bg-alpha + 0.2, $shadow-blur: 1rem) {
+  background: change-color($color, $alpha: $bg-alpha);
+  box-shadow: inset 0 0 2rem change-color($color, $alpha: $shadow-alpha);
+}
+
+@mixin outlined-text($text-color: white, $shadow-color: contrast-color($text-color)) {
+  color: $text-color;
+  text-shadow: shadow-levitate($shadow-color);
+}
+
+@mixin graded-glass($bg-color, $text-color: contrast-color($bg-color), $shadow-color: contrast-color($text-color)) {
+  background: linear-gradient(
+    to bottom,
+    change-color($bg-color, $lightness: 60%, $alpha: 0.9) 0%,
+    change-color($bg-color, $alpha: 0.5) 40%
+  );
+  @include outlined-text($text-color);
 }

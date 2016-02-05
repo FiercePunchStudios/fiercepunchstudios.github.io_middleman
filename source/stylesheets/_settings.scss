@@ -50,24 +50,64 @@
 // $opposite-direction: right;
 // $default-float: left;
 
-$color-brand: hsl(245, 83%, 35%); //hsl(185,	90.6%, 48.7%); // originally #01C6E8
-// $color-brand: adjust-color($color-brand, $hue: 24, $saturation: -40.6%, $lightness: 0.3%); // logo blue: hsl(209, 50%, 49%); //#3E80BC;
-$color-accent: adjust-color($color-brand, $hue: 53, $saturation: -41.4%, $lightness: -16.3%); //hsl(238, 49.2%, 32.4%); //originally #101595
+
+//////////////////////////////////////////////////////////////////////
+// BEGIN FIERCE PUNCH STUDIOS
+// $color-brand: hsl(245, 83%, 35%); //hsl(185,	90.6%, 48.7%); // originally #01C6E8
+$color-brand: hsl(231, 56%, 50%); //cobalt;
+$color-accent: hsl(200, 100%, 51%); //electricblue;
+// $color-accent: adjust-color($color-brand, $hue: 180deg, $saturation: 20%, $lightness: 20%);
 $color-glow: adjust-color($color-brand, $hue: 9, $saturation: 8.6%, $lightness: -0.6%); // hsl(194, 99.2%, 47.3%); //rgb(1, 186, 240);
-$color-brand-dark: adjust-color($color-brand, $hue: 38, $saturation: -07.6%, $lightness: -21.7%); //hsl(223, 83%, 27%); //#0C2C7F;
-$color-brand-bg: adjust-color($color-brand, $hue: -15, $saturation: -15%, $lightness: +45%);
-$color-brand-neutral: hsl(220, 33%, 66%); //hsl(201, 12%, 49%); //rgb(109, 129, 140);
+$color-brand-neutral: scale-color($color-brand, $saturation: -62%, $lightness: 30%); // earlier neutral: rgb(140, 159, 197) / hsl(220, 33, 66)
 $color-text-light: white;
 $color-text-dark: black;
+$color-text-contrast: $color-text-dark;
+$color-shadow: hsl(0, 0, 15%);
 
-$primary-color: $color-brand;
-$secondary-color: $color-accent;
+$primary-color: $color-accent;
+$secondary-color: $color-brand;
 
 //semantic color names
-$body-bg-color: $color-brand-neutral;
+$color-body-bg: $color-brand-neutral;
+
+// $nav-belt-color: rgb(161, 161, 200); // hsl(240, 26%, 71%)``
+$nav-belt-color: $primary-color;
 
 //combination constants
-$shadow-main: 0.1rem 0.3rem 0.4rem hsl(0, 0, 15%);
+$shadow-main: 0.1rem 0.3rem 0.4rem $color-shadow;
+
+// FPS color needs
+// body bg
+// button bg
+// text color
+// text panel bg
+// link color, will probably be on light bg, and will be bg of btn
+// button hover effect
+// button active effect
+// button current effect
+
+// Size constants
+$font-size-h1: 3rem;
+$font-size-h2: 2rem;
+$font-size-h3: 1.5rem;
+$font-size-p: 1rem;
+
+$global-radius: 1rem;
+$global-padding: 0.5rem;
+$link-padding-top: $global-padding;
+$nav-margin-top: 2rem;
+$nav-height: 2rem + $link-padding-top;
+
+// Fonts
+$font-h1-primary: "Univers";
+$font-h1-family: $font-h1-primary, Helvetica, Arial, sans-serif;
+$font-p-primary: "Something?";
+$font-p-family: $font-p-primary, Helvetica, Arial, sans-serif;
+
+
+// END FPS
+//////////////////////////////////////////////////////////////////////
+
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
