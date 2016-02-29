@@ -94,10 +94,8 @@ helpers do
 
   def nav_link(link_text, url, options = {})
     options.reverse_merge!(title: link_text, alt: link_text)
-    return link_to(link_text, url, options) unless is_current?(url)
-
-    options[:class] = [options[:class], 'current'].compact.join(' ')
-    return content_tag(:span, link_text, options)
+    options[:class] = [options[:class], 'current'].compact.join(' ') if is_current?(url)
+    return link_to(link_text, url, options)
   end
 end
 
