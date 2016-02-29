@@ -142,11 +142,15 @@
   text-shadow: shadow-levitate($shadow-color);
 }
 
-@mixin graded-glass($bg-color, $text-color: contrast-color($bg-color), $shadow-color: contrast-color($text-color)) {
-  background: linear-gradient(
+@function graded-glass-gradient($color) {
+  @return linear-gradient(
     to bottom,
-    change-color($bg-color, $lightness: 60%, $alpha: 0.9) 0%,
-    change-color($bg-color, $alpha: 0.5) 40%
+    change-color($color, $lightness: 60%, $alpha: 0.9) 0%,
+    change-color($color, $alpha: 0.5) 40%
   );
+}
+
+@mixin graded-glass($bg-color, $text-color: contrast-color($bg-color), $shadow-color: contrast-color($text-color)) {
+  background:graded-glass-gradient($bg-color);
   @include outlined-text($text-color);
 }

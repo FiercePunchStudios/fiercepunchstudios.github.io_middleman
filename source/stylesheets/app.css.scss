@@ -2,6 +2,16 @@
 @import "foundation.scss";
 @import "fps_toolbox";
 
+//http://stackoverflow.com/questions/23586568/foundation-icon-fonts-via-bower
+//http://foundation.zurb.com/forum/posts/12670-foundation-icon-fonts-via-bower-help
+$fi-path: "../bower_components/foundation-icon-fonts";
+@import "../bower_components/foundation-icon-fonts/foundation-icons";
+
+// 2. It sounds like I should dump the twitter embed and just put it on the contract page/social media buttons on the bottom.
+// 4. @Carpy , does it do that on every page? I'm just using the background-size attribute `cover `, so it should only resize when the viewport changes.
+// 6. @djmitchella , what os are you seeing the scrollbar on? And is it on every page? I only get a vertical scrollbar on the news page.
+// 8. The image is 1080 iirc, and I want it to display cleanly on better devices, but you make a good point about wasted resolution. I'll see about media querying for smaller versions.
+
 // sizes, fonts, and colors moved to _settings.scss
 
 //////////////////////////
@@ -39,14 +49,14 @@ h1, h2 { text-align: center; }
 
   @media #{$medium-up} {
     max-width: 55rem;
-    margin-top: 1rem;
+    // margin-top: 1rem;
   }
   #container-column { @include grid-column($columns: 12, $center: true, $collapse: true); }
 }
 
 #sitehead {
   @include grid-row();
-  #navlinks { @include grid-column($columns: 12, $collapse: true); }
+  .navrow { @include grid-column($columns: 12, $collapse: true); }
 
   margin: 0 0 0.5rem 0;
   @media #{$medium-up} { margin: 0 0 2rem 0; }
@@ -58,13 +68,6 @@ h1, h2 { text-align: center; }
 
   margin: 0.5rem 0 0 0;
   @media #{$medium-up} { margin: 2rem 0 0 0; }
-
-  ul { @include button-group-container(); }
-  ul li { @include button-group-style(); }
-  & .btn {
-    padding: 0.5rem;
-    font-size: .7rem;
-  }
 }
 
 //////////////////////////
@@ -75,10 +78,9 @@ $nav-height: $logo-padding + $logo-height;
 $logo-padding-lg: 1rem;
 $logo-height-lg: $logo-padding-lg * 3;
 $nav-height-lg: $logo-padding-lg + $logo-height-lg; //4rem = 64px
-#navbelt {
-  @include graded-glass($nav-belt-color, $color-text-light);
-  @include nav-bar($nav-height);
-  #logo { max-height: $logo-height; }
+#nav-top {
+  // @include nav-bar($nav-height);
+  // #logo { max-height: $logo-height; }
 
   @media #{$medium-up} {
     @include nav-bar($nav-height-lg);
@@ -86,12 +88,20 @@ $nav-height-lg: $logo-padding-lg + $logo-height-lg; //4rem = 64px
   }
 }
 
-.belt-btn {
+.belt-btn, .belt-label {
+  @include graded-glass($nav-belt-color, $color-text-light);
+  display: inline;
+  color: $color-text-light;
+  border-left: 1px solid adjust-color($nav-belt-color, $lightness:-15%, $alpha:-0.6);
+  border-right: 1px solid adjust-color($nav-belt-color, $lightness:15%, $alpha:-0.6);
+
   @media #{$medium-up} {
     font-size: 1.2rem; //19.2px = 1.5vw = 1.2rem
   }
-  color: $color-text-light;
-  transition: 0.5s;
+}
+
+.belt-btn {
+  transition: 0.4s;
 
   &:hover {
     background: $nav-belt-color;
@@ -99,7 +109,40 @@ $nav-height-lg: $logo-padding-lg + $logo-height-lg; //4rem = 64px
   }
 }
 
-.belt-btn.current { @include frosted-glass($color-text-light); }
+.belt-btn.current { @include graded-glass($color-text-light); }
+
+#navbelt-small {
+  @include graded-glass($nav-belt-color, $color-text-light);
+  & a {color: $color-text-light;}
+
+  .left-off-canvas-toggle { margin: 0.5rem; }
+}
+
+#nav-bottom {
+  // @include nav-bar(25px);
+
+  // ul { @include button-group-container(); }
+  // ul li { @include button-group-style(); }
+  ul {
+    display: flex;
+    margin: 0;
+
+    li { flex: 1; }
+  }
+
+  ul > li,
+  ul > li > a,
+  ul > li > span {
+    display: inline-block;
+    width: 100%;
+  }
+
+  a, span {
+    padding: 0.5rem;
+    font-size: .7rem;
+  }
+}
+
 
 //////////////////////////
 // body

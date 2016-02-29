@@ -12,13 +12,15 @@
 </head>
 
 <body class="<%= page_classes %>">
-  <div id="container-row">
-    <div id="container-column">
+  <div id="container-row" class="off-canvas-wrap" data-offcanvas>
+    <div id="container-column" class="inner-wrap">
       <%= partial 'partials/header' %>
       <main id="main-card">
         <%= yield %>
       </main>
       <%= partial 'partials/footer' %>
+
+      <a class="exit-off-canvas"></a>
     </div>
   </div>
   <%= javascript_include_tag  "all" %>
