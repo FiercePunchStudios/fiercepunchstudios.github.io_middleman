@@ -21,11 +21,9 @@ body {
   color: $color-text-dark;
   text-align: center;
 
-  background-image: radial-gradient( closest-corner,
-                      hsla(0, 0, 0, 0.1) 0%,
-                      hsla(0, 0, 0, 0.2) 100%
-                    ),
-                    image-url("images/minneapolis.jpg");
+  $bg-rad-grad: radial-gradient( closest-corner, hsla(0, 0, 0, 0.1) 0%, hsla(0, 0, 0, 0.2) 100% );
+  background-image: $bg-rad-grad, image-url("images/minneapolis-640-portrait.jpg");
+  @media #{$medium-up} { background-image: $bg-rad-grad, image-url("images/minneapolis-1024.jpg"); }
   background-repeat: repeat-y, no-repeat;
   background-position: center, center;
   background-size: cover, cover;
