@@ -10,7 +10,6 @@ $fi-path: "../bower_components/foundation-icon-fonts";
 // 2. It sounds like I should dump the twitter embed and just put it on the contract page/social media buttons on the bottom.
 // 4. @Carpy , does it do that on every page? I'm just using the background-size attribute `cover `, so it should only resize when the viewport changes.
 // 6. @djmitchella , what os are you seeing the scrollbar on? And is it on every page? I only get a vertical scrollbar on the news page.
-// 8. The image is 1080 iirc, and I want it to display cleanly on better devices, but you make a good point about wasted resolution. I'll see about media querying for smaller versions.
 
 // sizes, fonts, and colors moved to _settings.scss
 
@@ -21,13 +20,15 @@ body {
   color: $color-text-dark;
   text-align: center;
 
-  $bg-rad-grad: radial-gradient( closest-corner, hsla(0, 0, 0, 0.1) 0%, hsla(0, 0, 0, 0.2) 100% );
-  background-image: $bg-rad-grad, image-url("images/minneapolis-640-portrait.jpg");
-  @media #{$medium-up} { background-image: $bg-rad-grad, image-url("images/minneapolis-1024.jpg"); }
-  background-repeat: repeat-y, no-repeat;
-  background-position: center, center;
-  background-size: cover, cover;
-  background-attachment: fixed, fixed;
+  // $bg-rad-grad: radial-gradient( closest-corner, hsla(0, 0, 0, 0.1) 0%, hsla(0, 0, 0, 0.2) 100% );
+  // background-image: $bg-rad-grad, image-url("images/minneapolis-640-portrait.jpg");
+  background-image: image-url("images/minneapolis-640-portrait.jpg");
+  @media #{$medium-up} { background-image: image-url("images/minneapolis-1024.jpg"); }
+  // background-repeat: no-repeat;
+  // background-position: center center;
+  background-size: cover;
+  // background-size: 100% 100%;
+  background-attachment: fixed;
 }
 
 h1, h2 { text-align: center; }
