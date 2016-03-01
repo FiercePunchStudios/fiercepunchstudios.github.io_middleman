@@ -1,33 +1,22 @@
 @import "settings";
 @import "foundation.scss";
 @import "fps_toolbox";
-
-//http://stackoverflow.com/questions/23586568/foundation-icon-fonts-via-bower
-//http://foundation.zurb.com/forum/posts/12670-foundation-icon-fonts-via-bower-help
-$fi-path: "../bower_components/foundation-icon-fonts";
+$fi-path: "../bower_components/foundation-icon-fonts"; //http://foundation.zurb.com/forum/posts/12670-foundation-icon-fonts-via-bower-help
 @import "../bower_components/foundation-icon-fonts/foundation-icons";
 
-// 2. It sounds like I should dump the twitter embed and just put it on the contract page/social media buttons on the bottom.
-// 4. @Carpy , does it do that on every page? I'm just using the background-size attribute `cover `, so it should only resize when the viewport changes.
-// 6. @djmitchella , what os are you seeing the scrollbar on? And is it on every page? I only get a vertical scrollbar on the news page.
-
-// sizes, fonts, and colors moved to _settings.scss
+// TODO: @Carpy , does it do that on every page? I'm just using the background-size attribute `cover `, so it should only resize when the viewport changes.
+// TODO: rename functions & selectors to fps-block__element
+// TODO: refactor SASS to be more compact; e.g. eliminate unnecessary rules
 
 //////////////////////////
 // universal elements selectors
 body {
   font-family: Helvetica, Arial, sans-serif;
-  color: $color-text-dark;
+  color: $fps-color-text-dark;
   text-align: center;
-
-  // $bg-rad-grad: radial-gradient( closest-corner, hsla(0, 0, 0, 0.1) 0%, hsla(0, 0, 0, 0.2) 100% );
-  // background-image: $bg-rad-grad, image-url("images/minneapolis-640-portrait.jpg");
   background-image: image-url("images/minneapolis-640-portrait.jpg");
   @media #{$medium-up} { background-image: image-url("images/minneapolis-1024.jpg"); }
-  // background-repeat: no-repeat;
-  // background-position: center center;
   background-size: cover;
-  // background-size: 100% 100%;
   background-attachment: fixed;
 }
 
@@ -37,7 +26,7 @@ h1, h2 { text-align: center; }
 // classes
 .btn {
   @include button();
-  @include graded-glass($primary-color, $color-text-light);
+  @include graded-glass($primary-color, $fps-color-text-light);
 }
 
 //////////////////////////
@@ -46,10 +35,7 @@ h1, h2 { text-align: center; }
   @include grid-row();
   width: 100%;
 
-  @media #{$medium-up} {
-    max-width: 55rem;
-    // margin-top: 1rem;
-  }
+  @media #{$medium-up} { max-width: 55rem; }
   #container-column { @include grid-column($columns: 12, $center: true, $collapse: true); }
 }
 
@@ -64,90 +50,54 @@ h1, h2 { text-align: center; }
 
 #sitefoot {
   @include grid-row();
-
   margin: 0.5rem 0 0 0;
   @media #{$medium-up} { margin: 2rem 0 0 0; }
 }
 
 //////////////////////////
 // Nav area
-$logo-padding: 0rem;
-$logo-height: 3rem;
-$nav-height: $logo-padding + $logo-height;
-$logo-padding-lg: 1rem;
-$logo-height-lg: $logo-padding-lg * 3;
-$nav-height-lg: $logo-padding-lg + $logo-height-lg; //4rem = 64px
 #nav-top {
-  // @include nav-bar($nav-height);
-  // #logo { max-height: $logo-height; }
-
-  @media #{$medium-up} {
-    @include nav-bar($nav-height-lg);
-    #logo {max-height: $logo-height-lg; }
-  }
+  @include nav-bar($fps-nav-height);
+  #logo {max-height: $fps-logo-height; }
 }
 
-.belt-btn, .belt-label {
-  @include graded-glass($nav-belt-color, $color-text-light);
-  display: inline;
-  color: $color-text-light;
-  border-left: 1px solid adjust-color($nav-belt-color, $lightness:-15%, $alpha:-0.6);
-  border-right: 1px solid adjust-color($nav-belt-color, $lightness:15%, $alpha:-0.6);
+.belt-btn, .belt-label, .belt-btn:hover {
+  @include graded-glass($fps-nav-belt-color, $fps-color-text-light);
+  color: $fps-color-text-light;
+  border-left: 1px solid adjust-color($fps-nav-belt-color, $lightness:-15%, $alpha:-0.6);
+  border-right: 1px solid adjust-color($fps-nav-belt-color, $lightness:15%, $alpha:-0.6);
 
   @media #{$medium-up} {
     font-size: 1.2rem; //19.2px = 1.5vw = 1.2rem
   }
 }
-
 .belt-btn {
-  transition: 0.4s;
-
-  &:hover {
-    background: $nav-belt-color;
-    color: $color-text-light;
-  }
+  @include transition(background-color);
+  &:hover { background-color: $fps-nav-belt-color; }
 }
 
-.belt-btn.current { @include graded-glass($color-text-light); }
+.belt-btn.current { @include graded-glass($fps-color-text-light); }
 
 #navbelt-small {
-  @include graded-glass($nav-belt-color, $color-text-light);
-  & a {color: $color-text-light;}
-
-  .left-off-canvas-toggle { margin: 0.5rem; }
+  @include graded-glass($fps-nav-belt-color, $fps-color-text-light);
+  & a {color: $fps-color-text-light;}
+  & .left-off-canvas-toggle { margin: 0.5rem; }
 }
 
 #nav-bottom {
-  // @include nav-bar(25px);
-
-  // ul { @include button-group-container(); }
-  // ul li { @include button-group-style(); }
-  ul {
-    display: flex;
-    margin: 0;
-
-    li { flex: 1; }
-  }
-
-  ul > li,
-  ul > li > a,
-  ul > li > span {
-    display: inline-block;
-    width: 100%;
-  }
-
-  a, span {
+  @include nav-bar();
+  & a,
+  & span {
     padding: 0.5rem;
     font-size: .7rem;
   }
 }
 
-
 //////////////////////////
 // body
 #main-card {
-  background-color: $color-text-light;
-  box-shadow: $shadow-main;
+  background-color: $fps-color-text-light;
+  box-shadow: $fps-shadow-main;
   padding: 0.5rem 2rem;
   text-align: left;
 }
@@ -158,14 +108,14 @@ $nav-height-lg: $logo-padding-lg + $logo-height-lg; //4rem = 64px
 .contacts { margin-left: auto; margin-right: auto; }
 
 body.index #main-card {
-  color: $color-text-light;
-  text-shadow: shadow-levitate($color-shadow);
+  color: $fps-color-text-light;
+  text-shadow: shadow-levitate($fps-color-shadow);
   text-align: center;
-  @include frosted-glass($color-text-light);
+  @include frosted-glass($fps-color-text-light);
 }
 
-.fps-name {
-  color: $color-text-light;
+.hero-title {
+  color: $fps-color-text-light;
   font-size: 4.5rem;  //72px ~= 5.5vw
   margin: 20vh auto 0;  //20vh = 124.4px
 }

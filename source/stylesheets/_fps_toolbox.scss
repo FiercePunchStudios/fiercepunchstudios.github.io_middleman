@@ -58,10 +58,11 @@
   box-shadow: inset 0 0 0.5rem $color-base, $shadow;   // must redo box-shadow, since declarations replace instead of append.
 }
 
-@mixin nav-bar($height: 3rem) {
+@mixin nav-bar($height: null) {
   //http://codepen.io/imohkay/pen/gpard
   // top level assumed to be <nav>
   ul {
+    margin: 0;
     display: flex;
     li { flex: 1; }
   }
@@ -70,19 +71,18 @@
   & > ul > li > a,
   & > ul > li > span {
     display: inline-block;
+    width: 100%;
   }
 
-  & > ul { margin: 0; }
-
-  &,
-  & > ul,
-  & > ul > li,
-  & > ul > li > * {
-    height: $height;
-    line-height: $height; // required to vertically center text within navbar
+  @if $height {
+    &,
+    & > ul,
+    & > ul > li,
+    & > ul > li > * {
+      height: $height;
+      line-height: $height; // required to vertically center text within navbar
+    }
   }
-
-  & > ul > li > * { width: 100%; }
 }
 
 @mixin nav-belt($shadow: none) {

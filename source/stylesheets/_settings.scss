@@ -53,28 +53,26 @@
 
 //////////////////////////////////////////////////////////////////////
 // BEGIN FIERCE PUNCH STUDIOS
-// $color-brand: hsl(245, 83%, 35%); //hsl(185,	90.6%, 48.7%); // originally #01C6E8
-$color-brand: hsl(231, 56%, 50%); //cobalt;
-$color-accent: hsl(200, 100%, 51%); //electricblue;
-// $color-accent: adjust-color($color-brand, $hue: 180deg, $saturation: 20%, $lightness: 20%);
-$color-glow: adjust-color($color-brand, $hue: 9, $saturation: 8.6%, $lightness: -0.6%); // hsl(194, 99.2%, 47.3%); //rgb(1, 186, 240);
-$color-brand-neutral: scale-color($color-brand, $saturation: -62%, $lightness: 30%); // earlier neutral: rgb(140, 159, 197) / hsl(220, 33, 66)
-$color-text-light: white;
-$color-text-dark: black;
-$color-text-contrast: $color-text-dark;
-$color-shadow: hsl(0, 0, 15%);
+$fps-color-brand: hsl(231, 56%, 50%); //cobalt;
+$fps-color-accent: hsl(200, 100%, 51%); //electricblue;
+$fps-color-glow: adjust-color($fps-color-brand, $hue: 9, $saturation: 8.6%, $lightness: -0.6%); // hsl(194, 99.2%, 47.3%); //rgb(1, 186, 240);
+$fps-color-brand-neutral: scale-color($fps-color-brand, $saturation: -62%, $lightness: 30%); // earlier neutral: rgb(140, 159, 197) / hsl(220, 33, 66)
+$fps-color-text-light: white;
+$fps-color-text-dark: black;
+$fps-color-text-contrast: $fps-color-text-dark;
+$fps-color-shadow: hsl(0, 0, 15%);
 
-$primary-color: $color-accent;
-$secondary-color: $color-brand;
+$primary-color: $fps-color-accent;
+$secondary-color: $fps-color-brand;
 
 //semantic color names
-$color-body-bg: $color-brand-neutral;
+$fps-color-body-bg: $fps-color-brand-neutral;
 
 // $nav-belt-color: rgb(161, 161, 200); // hsl(240, 26%, 71%)``
-$nav-belt-color: $primary-color;
+$fps-nav-belt-color: $primary-color;
 
 //combination constants
-$shadow-main: 0.1rem 0.3rem 0.4rem $color-shadow;
+$fps-shadow-main: 0.1rem 0.3rem 0.4rem $fps-color-shadow;
 
 // FPS color needs
 // body bg
@@ -87,22 +85,27 @@ $shadow-main: 0.1rem 0.3rem 0.4rem $color-shadow;
 // button current effect
 
 // Size constants
-$font-size-h1: 3rem;
-$font-size-h2: 2rem;
-$font-size-h3: 1.5rem;
-$font-size-p: 1rem;
+$fps-font-size-h1: 3rem;
+$fps-font-size-h2: 2rem;
+$fps-font-size-h3: 1.5rem;
+$fps-font-size-p: 1rem;
 
 $global-radius: 1rem;
 $global-padding: 0.5rem;
-$link-padding-top: $global-padding;
-$nav-margin-top: 2rem;
-$nav-height: 2rem + $link-padding-top;
+// $link-padding-top: $global-padding;
+// $nav-margin-top: 2rem;
+// $nav-height: 2rem + $link-padding-top;
+
+$fps-logo-padding: 1rem;
+$fps-logo-height: $fps-logo-padding * 3;
+$fps-nav-height: $fps-logo-padding + $fps-logo-height; //4rem = 64px
+
 
 // Fonts
-$font-h1-primary: "Univers";
-$font-h1-family: $font-h1-primary, Helvetica, Arial, sans-serif;
-$font-p-primary: "Something?";
-$font-p-family: $font-p-primary, Helvetica, Arial, sans-serif;
+// $font-h1-primary: "Univers";
+// $font-h1-family: $fps-font-h1-primary, Helvetica, Arial, sans-serif;
+// $font-p-primary: "Univers";
+// $font-p-family: $fps-font-p-primary, Helvetica, Arial, sans-serif;
 
 
 // END FPS
