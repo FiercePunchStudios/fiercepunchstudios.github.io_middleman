@@ -4,9 +4,9 @@
 $fi-path: "../bower_components/foundation-icon-fonts"; //http://foundation.zurb.com/forum/posts/12670-foundation-icon-fonts-via-bower-help
 @import "../bower_components/foundation-icon-fonts/foundation-icons";
 
-// TODO: @Carpy , does it do that on every page? I'm just using the background-size attribute `cover `, so it should only resize when the viewport changes.
 // TODO: rename functions & selectors to fps-block__element
 // TODO: refactor SASS to be more compact; e.g. eliminate unnecessary rules
+// TODO: Change Consulting page to have staff profiles and practices
 
 //////////////////////////
 // universal elements selectors
@@ -14,15 +14,9 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   color: $fps-color-text-dark;
   text-align: center;
-  // background-image: image-url("images/IDS-640.jpg");
-  // background-size: 100% auto;
-  // background-attachment: scroll;
   background: image-url("images/IDS-640.jpg") top / 100% auto no-repeat scroll $primary-color;
 
   @media #{$medium-up} {
-    // background-image: image-url("images/minneapolis-1024.jpg");
-    // background-attachment: fixed;
-    // background-size: cover;
     background: image-url("images/minneapolis-1024.jpg") top / cover no-repeat fixed;
   }
 }
@@ -33,7 +27,7 @@ h1, h2 { text-align: center; }
 // classes
 .btn {
   @include button();
-  @include graded-glass($primary-color, $fps-color-text-light);
+  @include fps-graded-glass($primary-color, $fps-color-text-light);
 }
 
 //////////////////////////
@@ -64,12 +58,12 @@ h1, h2 { text-align: center; }
 //////////////////////////
 // Nav area
 #nav-top {
-  @include nav-bar($fps-nav-height);
+  @include fps-nav-bar($fps-nav-height);
   #logo {max-height: $fps-logo-height; }
 }
 
 .belt-btn, .belt-label, .belt-btn:hover {
-  @include graded-glass($fps-nav-belt-color, $fps-color-text-light);
+  @include fps-graded-glass($fps-nav-belt-color, $fps-color-text-light);
   color: $fps-color-text-light;
   border-left: 1px solid adjust-color($fps-nav-belt-color, $lightness:-15%, $alpha:-0.6);
   border-right: 1px solid adjust-color($fps-nav-belt-color, $lightness:15%, $alpha:-0.6);
@@ -83,16 +77,16 @@ h1, h2 { text-align: center; }
   &:hover { background-color: $fps-nav-belt-color; }
 }
 
-.belt-btn.current { @include graded-glass($fps-color-text-light); }
+.belt-btn.current { @include fps-graded-glass($fps-color-text-light); }
 
 #navbelt-small {
-  @include graded-glass($fps-nav-belt-color, $fps-color-text-light);
+  @include fps-graded-glass($fps-nav-belt-color, $fps-color-text-light);
   & a {color: $fps-color-text-light;}
   & .left-off-canvas-toggle { margin: 0.5rem; }
 }
 
 #nav-bottom {
-  @include nav-bar();
+  @include fps-nav-bar();
   & a,
   & span {
     padding: 0.5rem;
@@ -116,9 +110,9 @@ h1, h2 { text-align: center; }
 
 body.index #main-card {
   color: $fps-color-text-light;
-  text-shadow: shadow-levitate($fps-color-shadow);
+  text-shadow: fps-shadow-levitate($fps-color-shadow);
   text-align: center;
-  @include frosted-glass($fps-color-text-light);
+  @include fps-frosted-glass($fps-color-text-light);
 }
 
 .hero-title {
@@ -127,9 +121,8 @@ body.index #main-card {
   line-height: .9;
   margin: 1rem auto 2rem;
   @media #{$medium-up} {
-    // margin: 20vh auto 0;  //20vh = 124.4px
     font-size: 4.5rem;
-    margin: 7.5rem auto 0;  //7.5rem = 120px
+    margin: 7.5rem auto 0;
   }
 }
 .tagline {
@@ -138,7 +131,6 @@ body.index #main-card {
       line-height: 1;
       margin-bottom: 2rem;
   }
-  @media #{$medium-up} { margin-bottom: 3rem; } // 5rem = 80px
+  @media #{$medium-up} { margin-bottom: 3rem; }
 }
-// .call-to-action { margin-top: 10vh; margin-bottom: 5vh; } // 10vh = 62.2px; 5vh = 31.1px
-.call-to-action { margin-bottom: 1rem; } // 2rem = 32px
+.call-to-action { margin-bottom: 1rem; }
