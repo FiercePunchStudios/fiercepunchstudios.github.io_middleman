@@ -137,9 +137,9 @@
   box-shadow: inset 0 0 2rem change-color($color, $alpha: $shadow-alpha);
 }
 
-@mixin fps-outlined-text($text-color: white, $shadow-color: contrast-color($text-color)) {
+@mixin fps-outlined-text($text-color: white, $shadow-color: fps-contrast-color($text-color)) {
   color: $text-color;
-  text-shadow: shadow-levitate($shadow-color);
+  text-shadow: fps-shadow-levitate($shadow-color);
 }
 
 @function fps-graded-glass-gradient($color) {
@@ -150,7 +150,7 @@
   );
 }
 
-@mixin fps-graded-glass($bg-color, $text-color: contrast-color($bg-color), $shadow-color: contrast-color($text-color)) {
+@mixin fps-graded-glass($bg-color, $text-color: fps-contrast-color($bg-color), $shadow-color: fps-contrast-color($text-color)) {
   background: fps-graded-glass-gradient($bg-color);
   @include fps-outlined-text($text-color);
 }
