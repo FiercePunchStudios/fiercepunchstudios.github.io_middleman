@@ -14,10 +14,17 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   color: $fps-color-text-dark;
   text-align: center;
-  background-image: image-url("images/minneapolis-640-portrait.jpg");
-  @media #{$medium-up} { background-image: image-url("images/minneapolis-1024.jpg"); }
-  background-size: cover;
-  background-attachment: fixed;
+  // background-image: image-url("images/IDS-640.jpg");
+  // background-size: 100% auto;
+  // background-attachment: scroll;
+  background: image-url("images/IDS-640.jpg") top / 100% auto no-repeat scroll $primary-color;
+
+  @media #{$medium-up} {
+    // background-image: image-url("images/minneapolis-1024.jpg");
+    // background-attachment: fixed;
+    // background-size: cover;
+    background: image-url("images/minneapolis-1024.jpg") top / cover no-repeat fixed;
+  }
 }
 
 h1, h2 { text-align: center; }
@@ -116,8 +123,22 @@ body.index #main-card {
 
 .hero-title {
   color: $fps-color-text-light;
-  font-size: 4.5rem;  //72px ~= 5.5vw
-  margin: 20vh auto 0;  //20vh = 124.4px
+  font-size: 3.5rem;  //72px ~= 5.5vw
+  line-height: .9;
+  margin: 1rem auto 2rem;
+  @media #{$medium-up} {
+    // margin: 20vh auto 0;  //20vh = 124.4px
+    font-size: 4.5rem;
+    margin: 7.5rem auto 0;  //7.5rem = 120px
+  }
 }
-.tagline { font-size: 1.5rem; } //24px ~= 1.8vw
-.call-to-action { margin-top: 10vh; margin-bottom: 5vh; }
+.tagline {
+  font-size: 1.5rem;
+  @media #{$small-only} {
+      line-height: 1;
+      margin-bottom: 2rem;
+  }
+  @media #{$medium-up} { margin-bottom: 3rem; } // 5rem = 80px
+}
+// .call-to-action { margin-top: 10vh; margin-bottom: 5vh; } // 10vh = 62.2px; 5vh = 31.1px
+.call-to-action { margin-bottom: 1rem; } // 2rem = 32px
