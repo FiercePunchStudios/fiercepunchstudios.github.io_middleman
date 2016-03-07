@@ -6,8 +6,12 @@ $fi-path: "../bower_components/foundation-icon-fonts"; //http://foundation.zurb.
 
 // TODO: rename functions & selectors to fps-block__element
 // TODO: refactor SASS to be more compact; e.g. eliminate unnecessary rules
-// TODO: Change Consulting page to have staff profiles and practices
 // TODO: refactor _settings.scss
+// TODO: Remove News Page
+// TODO: Change Consulting page to have staff profiles and practices; maybe rename?
+// TODO: Either remove Contact to balance it out or add About page instead of News
+//       Alternatively, could move logo to left side and have only 3 links
+// TODO: Shift salable stuff (Consulting & Games) to left side
 
 //////////////////////////
 // universal elements selectors
@@ -135,3 +139,21 @@ body.index #main-card {
   @media #{$medium-up} { margin-bottom: 3rem; }
 }
 .call-to-action { margin-bottom: 1rem; }
+
+.fps-profile {
+  border: 0.2rem solid $primary-color;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0 auto 2rem;
+
+  @include clearfix();
+
+  .fps-profile-picture {
+    // width: 30%;
+    margin: 0.5rem 0.4rem;
+    border-radius: 0.5rem;
+    float: right;
+  }
+
+  h4 { font-style: italic; }
+}
