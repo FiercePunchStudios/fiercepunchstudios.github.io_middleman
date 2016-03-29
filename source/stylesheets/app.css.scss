@@ -4,10 +4,6 @@
 $fi-path: "../bower_components/foundation-icon-fonts"; //http://foundation.zurb.com/forum/posts/12670-foundation-icon-fonts-via-bower-help
 @import "../bower_components/foundation-icon-fonts/foundation-icons";
 
-// TODO: New News page? Do we just link to Twitter feed?
-// TODO: Change Consulting page to have staff profiles and practices; maybe rename?
-// TODO: Adjust .current borders to be .current color instead of & color
-
 // TODO: rename functions & selectors to fps-block__element
 // TODO: refactor SASS to be more compact; e.g. eliminate unnecessary rules
 // TODO: refactor _settings.scss
@@ -178,6 +174,4 @@ body.index #main-card {
   text-align: center;
 }
 
-.fps-game {
-  @extend .fps-frame;
-}
+.fps-game { @extend .fps-frame; }
