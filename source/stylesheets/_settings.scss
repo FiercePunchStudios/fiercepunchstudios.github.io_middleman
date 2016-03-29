@@ -62,13 +62,10 @@ $fps-color-text-dark: black;
 $fps-color-text-contrast: $fps-color-text-dark;
 $fps-color-shadow: hsl(0, 0, 15%);
 
+//semantic color names
 $primary-color: $fps-color-accent;
 $secondary-color: $fps-color-brand;
-
-//semantic color names
 $fps-color-body-bg: $fps-color-brand-neutral;
-
-// $nav-belt-color: rgb(161, 161, 200); // hsl(240, 26%, 71%)``
 $fps-nav-belt-color: $primary-color;
 
 //combination constants
@@ -90,23 +87,18 @@ $fps-font-size-h2: 2rem;
 $fps-font-size-h3: 1.5rem;
 $fps-font-size-p: 1rem;
 
+//semantic size names
 $global-radius: 1rem;
 $global-padding: 0.5rem;
-// $link-padding-top: $global-padding;
-// $nav-margin-top: 2rem;
-// $nav-height: 2rem + $link-padding-top;
-
+$fps-region-gutter: 2rem;
 $fps-logo-padding: 1rem;
 $fps-logo-height: $fps-logo-padding * 3;
 $fps-nav-height: $fps-logo-padding + $fps-logo-height; //4rem = 64px
 
-
 // Fonts
-// $font-h1-primary: "Univers";
-// $font-h1-family: $fps-font-h1-primary, Helvetica, Arial, sans-serif;
-// $font-p-primary: "Univers";
-// $font-p-family: $fps-font-p-primary, Helvetica, Arial, sans-serif;
-
+$fps-font-primary: "Univers";
+$fps-font-family: $fps-font-primary, Helvetica, Arial, sans-serif;
+$body-font-family: $fps-font-family;
 
 // END FPS
 //////////////////////////////////////////////////////////////////////

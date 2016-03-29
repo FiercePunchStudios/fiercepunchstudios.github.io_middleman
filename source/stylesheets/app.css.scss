@@ -14,7 +14,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   color: $fps-color-text-dark;
   text-align: center;
-  background: image-url("images/IDS-640.jpg") top / 100% auto no-repeat scroll $primary-color;
+  background: image-url("images/IDS-640.jpg") top / 100% auto no-repeat scroll $fps-color-body-bg;
 
   @media #{$medium-up} {
     background: image-url("images/minneapolis-1024.jpg") top / cover no-repeat fixed;
@@ -44,15 +44,15 @@ h1, h2 { text-align: center; }
   @include grid-row();
   .navrow { @include grid-column($columns: 12, $collapse: true); }
 
-  margin: 0 0 0.5rem 0;
-  @media #{$medium-up} { margin: 0 0 2rem 0; }
+  margin: 0 0 $global-padding 0;
+  @media #{$medium-up} { margin: 0 0 $fps-region-gutter 0; }
 
 }
 
 #sitefoot {
   @include grid-row();
-  margin: 0.5rem 0 0 0;
-  @media #{$medium-up} { margin: 2rem 0 0 0; }
+  margin: $global-padding 0 0 0;
+  @media #{$medium-up} { margin: $fps-region-gutter 0 0 0; }
 }
 
 //////////////////////////
@@ -63,10 +63,10 @@ h1, h2 { text-align: center; }
 }
 
 .belt-btn, .belt-label, .belt-btn:hover {
-  @include fps-graded-glass($fps-nav-belt-color, $fps-color-text-light);
+  @include fps-graded-glass($fps-color-nav-belt, $fps-color-text-light);
   color: $fps-color-text-light;
-  border-left: 1px solid adjust-color($fps-nav-belt-color, $lightness:-15%, $alpha:-0.6);
-  border-right: 1px solid adjust-color($fps-nav-belt-color, $lightness:15%, $alpha:-0.6);
+  border-left: 1px solid adjust-color($fps-color-nav-belt, $lightness:-15%, $alpha:-0.6);
+  border-right: 1px solid adjust-color($fps-color-nav-belt, $lightness:15%, $alpha:-0.6);
 
   @media #{$medium-up} {
     font-size: 1.2rem; //19.2px = 1.5vw = 1.2rem
@@ -74,7 +74,7 @@ h1, h2 { text-align: center; }
 }
 .belt-btn {
   @include transition(background-color);
-  &:hover { background-color: $fps-nav-belt-color; }
+  &:hover { background-color: $fps-color-nav-belt; }
 }
 
 .belt-btn.current {
@@ -84,16 +84,16 @@ h1, h2 { text-align: center; }
 }
 
 #navbelt-small {
-  @include fps-graded-glass($fps-nav-belt-color, $fps-color-text-light);
+  @include fps-graded-glass($fps-color-nav-belt, $fps-color-text-light);
   & a {color: $fps-color-text-light;}
-  & .left-off-canvas-toggle { margin: 0.5rem; }
+  & .left-off-canvas-toggle { margin: $global-padding; }
 }
 
 #nav-bottom {
   @include fps-nav-bar();
   & a,
   & span {
-    padding: 0.5rem;
+    padding: $global-padding;
     font-size: .7rem;
   }
 }
@@ -103,7 +103,7 @@ h1, h2 { text-align: center; }
 #main-card {
   background-color: $fps-color-text-light;
   box-shadow: $fps-shadow-main;
-  padding: 0.5rem 2rem;
+  padding: $global-padding 2rem;
   text-align: left;
 }
 
@@ -123,7 +123,7 @@ body.index #main-card {
   color: $fps-color-text-light;
   font-size: 3.5rem;  //72px ~= 5.5vw
   line-height: .9;
-  margin: 1rem auto 2rem;
+  margin: 1rem auto $fps-region-gutter;
   @media #{$medium-up} {
     font-size: 4.5rem;
     margin: 7.5rem auto 0;
@@ -163,10 +163,10 @@ body.index #main-card {
 }
 
 .testimonial {
-  @include panel($padding: 0.5rem);
+  @include panel($padding: $global-padding);
   font-style: italic;
   font-size: 90%;
-  @include radius(0.5rem);
+  @include radius($global-padding);
 }
 
 .beseech {

@@ -3,10 +3,7 @@
   @return if(lightness($bg-color) > $threshold, $dark, $light);
 }
 
-@function fps-shadow-levitate($color: black) {
-  // Gives font subtle outline
-  @return 0 0 0.1rem $color;
-}
+@function fps-shadow-levitate($color: black) { @return 0 0 0.1rem $color; } // Gives font subtle outline
 
 @mixin fps-box($bgcolor:$color-text-light, $shadow: 0.1rem 0.1rem 0.1rem black) {
   background: $color-text-light;
