@@ -4,14 +4,13 @@
 $fi-path: "../bower_components/foundation-icon-fonts"; //http://foundation.zurb.com/forum/posts/12670-foundation-icon-fonts-via-bower-help
 @import "../bower_components/foundation-icon-fonts/foundation-icons";
 
+// TODO: New News page? Do we just link to Twitter feed?
+// TODO: Change Consulting page to have staff profiles and practices; maybe rename?
+// TODO: Adjust .current borders to be .current color instead of & color
+
 // TODO: rename functions & selectors to fps-block__element
 // TODO: refactor SASS to be more compact; e.g. eliminate unnecessary rules
 // TODO: refactor _settings.scss
-// TODO: Remove News Page
-// TODO: Change Consulting page to have staff profiles and practices; maybe rename?
-// TODO: Either remove Contact to balance it out or add About page instead of News
-//       Alternatively, could move logo to left side and have only 3 links
-// TODO: Shift salable stuff (Consulting & Games) to left side
 
 //////////////////////////
 // universal elements selectors
@@ -82,7 +81,11 @@ h1, h2 { text-align: center; }
   &:hover { background-color: $fps-nav-belt-color; }
 }
 
-.belt-btn.current { @include fps-graded-glass($fps-color-text-light); }
+.belt-btn.current {
+  @include fps-graded-glass($fps-color-text-light);
+  border-left: 1px solid adjust-color($fps-color-text-light, $lightness:-15%, $alpha:-0.6);
+  border-right: 1px solid adjust-color($fps-color-text-light, $lightness:15%, $alpha:-0.6);
+}
 
 #navbelt-small {
   @include fps-graded-glass($fps-nav-belt-color, $fps-color-text-light);
@@ -140,7 +143,7 @@ body.index #main-card {
 }
 .call-to-action { margin-bottom: 1rem; }
 
-.fps-profile {
+.fps-frame {
   border: 0.2rem solid $primary-color;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
@@ -148,7 +151,7 @@ body.index #main-card {
 
   @include clearfix();
 
-  .fps-profile-picture {
+  .fps-frame-picture {
     // width: 30%;
     margin: 0.5rem 0.4rem;
     border-radius: 0.5rem;
@@ -156,4 +159,25 @@ body.index #main-card {
   }
 
   h4 { font-style: italic; }
+}
+
+.selling-point {
+  @extend .fps-frame;
+  h3 { font-size: 1.5rem; }
+}
+
+.testimonial {
+  @include panel($padding: 0.5rem);
+  font-style: italic;
+  font-size: 90%;
+  @include radius(0.5rem);
+}
+
+.beseech {
+  display: block;
+  text-align: center;
+}
+
+.fps-game {
+  @extend .fps-frame;
 }
