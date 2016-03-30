@@ -8,6 +8,47 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
+//////////////////////////////////////////////////////////////////////
+// BEGIN FIERCE PUNCH STUDIOS
+$fps-color-brand: hsl(231, 56%, 50%); //cobalt;
+$fps-color-accent: hsl(200, 100%, 51%); //electricblue;
+$fps-color-glow: adjust-color($fps-color-brand, $hue: 9, $saturation: 8.6%, $lightness: -0.6%); // hsl(194, 99.2%, 47.3%); //rgb(1, 186, 240);
+$fps-color-brand-neutral: scale-color($fps-color-brand, $saturation: -62%, $lightness: 30%); // earlier neutral: rgb(140, 159, 197) / hsl(220, 33, 66)
+$fps-color-text-light: white; // text panel bg  // button current effect
+$fps-color-text-dark: black;  // text color
+$fps-color-text-contrast: $fps-color-text-dark;
+$fps-color-shadow: hsl(0, 0, 15%);
+
+//semantic color names
+$primary-color: $fps-color-accent;  // button bg // link color
+$secondary-color: $fps-color-brand;
+$fps-color-body-bg: $fps-color-brand-neutral; // body bg
+$fps-color-nav-belt: $primary-color;
+
+//combination constants
+$fps-shadow-main: 0.1rem 0.3rem 0.4rem $fps-color-shadow;
+
+// Size constants
+$fps-font-size-h1: 3rem;
+$fps-font-size-h2: 2rem;
+$fps-font-size-h3: 1.5rem;
+$fps-font-size-p: 1rem;
+
+//semantic size names
+$global-radius: 1rem;
+$global-padding: 0.5rem;
+$fps-region-gutter: 2rem;
+$fps-logo-padding: 1rem;
+$fps-logo-height: $fps-logo-padding * 3;
+$fps-nav-height: $fps-logo-padding + $fps-logo-height; //4rem = 64px
+
+// Fonts
+$fps-font-primary: "Univers";
+$fps-font-family: $fps-font-primary, Helvetica, Arial, sans-serif;
+$body-font-family: $fps-font-family;
+// END FPS
+//////////////////////////////////////////////////////////////////////
+
 // $experimental: true;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
@@ -51,57 +92,7 @@
 // $default-float: left;
 
 
-//////////////////////////////////////////////////////////////////////
-// BEGIN FIERCE PUNCH STUDIOS
-$fps-color-brand: hsl(231, 56%, 50%); //cobalt;
-$fps-color-accent: hsl(200, 100%, 51%); //electricblue;
-$fps-color-glow: adjust-color($fps-color-brand, $hue: 9, $saturation: 8.6%, $lightness: -0.6%); // hsl(194, 99.2%, 47.3%); //rgb(1, 186, 240);
-$fps-color-brand-neutral: scale-color($fps-color-brand, $saturation: -62%, $lightness: 30%); // earlier neutral: rgb(140, 159, 197) / hsl(220, 33, 66)
-$fps-color-text-light: white;
-$fps-color-text-dark: black;
-$fps-color-text-contrast: $fps-color-text-dark;
-$fps-color-shadow: hsl(0, 0, 15%);
 
-//semantic color names
-$primary-color: $fps-color-accent;
-$secondary-color: $fps-color-brand;
-$fps-color-body-bg: $fps-color-brand-neutral;
-$fps-nav-belt-color: $primary-color;
-
-//combination constants
-$fps-shadow-main: 0.1rem 0.3rem 0.4rem $fps-color-shadow;
-
-// FPS color needs
-// body bg
-// button bg
-// text color
-// text panel bg
-// link color, will probably be on light bg, and will be bg of btn
-// button hover effect
-// button active effect
-// button current effect
-
-// Size constants
-$fps-font-size-h1: 3rem;
-$fps-font-size-h2: 2rem;
-$fps-font-size-h3: 1.5rem;
-$fps-font-size-p: 1rem;
-
-//semantic size names
-$global-radius: 1rem;
-$global-padding: 0.5rem;
-$fps-region-gutter: 2rem;
-$fps-logo-padding: 1rem;
-$fps-logo-height: $fps-logo-padding * 3;
-$fps-nav-height: $fps-logo-padding + $fps-logo-height; //4rem = 64px
-
-// Fonts
-$fps-font-primary: "Univers";
-$fps-font-family: $fps-font-primary, Helvetica, Arial, sans-serif;
-$body-font-family: $fps-font-family;
-
-// END FPS
-//////////////////////////////////////////////////////////////////////
 
 
 // We use these as default colors throughout

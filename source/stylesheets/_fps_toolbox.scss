@@ -147,7 +147,11 @@
   );
 }
 
-@mixin fps-graded-glass($bg-color, $text-color: fps-contrast-color($bg-color), $shadow-color: fps-contrast-color($text-color)) {
+@mixin fps-graded-glass($bg-color, $text-color: fps-contrast-color($bg-color), $shadow-color: fps-contrast-color($text-color), $borders: true) {
   background: fps-graded-glass-gradient($bg-color);
   @include fps-outlined-text($text-color);
+  @if $borders {
+    border-left: 1px solid adjust-color($bg-color, $lightness:-15%, $alpha:-0.6);
+    border-right: 1px solid adjust-color($bg-color, $lightness:15%, $alpha:-0.6);
+  }
 }

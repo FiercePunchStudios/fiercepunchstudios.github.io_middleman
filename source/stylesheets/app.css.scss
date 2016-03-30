@@ -5,13 +5,11 @@ $fi-path: "../bower_components/foundation-icon-fonts"; //http://foundation.zurb.
 @import "../bower_components/foundation-icon-fonts/foundation-icons";
 
 // TODO: rename functions & selectors to fps-block__element
-// TODO: refactor SASS to be more compact; e.g. eliminate unnecessary rules
-// TODO: refactor _settings.scss
 
 //////////////////////////
 // universal elements selectors
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: $fps-font-family;
   color: $fps-color-text-dark;
   text-align: center;
   background: image-url("images/IDS-640.jpg") top / 100% auto no-repeat scroll $fps-color-body-bg;
@@ -30,6 +28,22 @@ h1, h2 { text-align: center; }
   @include fps-graded-glass($primary-color, $fps-color-text-light);
 }
 
+.fps-frame {
+  border: 0.2rem solid $primary-color;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0 auto 2rem;
+
+  @include clearfix();
+
+  .fps-frame-picture {
+    width: 30%;
+    margin: 0.5rem 0.4rem;
+    border-radius: 0.5rem;
+    float: right;
+  }
+}
+
 //////////////////////////
 // layout
 #container-row {
@@ -46,7 +60,6 @@ h1, h2 { text-align: center; }
 
   margin: 0 0 $global-padding 0;
   @media #{$medium-up} { margin: 0 0 $fps-region-gutter 0; }
-
 }
 
 #sitefoot {
@@ -59,33 +72,26 @@ h1, h2 { text-align: center; }
 // Nav area
 #nav-top {
   @include fps-nav-bar($fps-nav-height);
-  #logo {max-height: $fps-logo-height; }
+  #logo { max-height: $fps-logo-height; }
 }
 
 .belt-btn, .belt-label, .belt-btn:hover {
   @include fps-graded-glass($fps-color-nav-belt, $fps-color-text-light);
   color: $fps-color-text-light;
-  border-left: 1px solid adjust-color($fps-color-nav-belt, $lightness:-15%, $alpha:-0.6);
-  border-right: 1px solid adjust-color($fps-color-nav-belt, $lightness:15%, $alpha:-0.6);
 
-  @media #{$medium-up} {
-    font-size: 1.2rem; //19.2px = 1.5vw = 1.2rem
-  }
+  @media #{$medium-up} { font-size: 1.2rem; /* 19.2px = 1.5vw = 1.2rem */ }
 }
+
 .belt-btn {
   @include transition(background-color);
   &:hover { background-color: $fps-color-nav-belt; }
 }
 
-.belt-btn.current {
-  @include fps-graded-glass($fps-color-text-light);
-  border-left: 1px solid adjust-color($fps-color-text-light, $lightness:-15%, $alpha:-0.6);
-  border-right: 1px solid adjust-color($fps-color-text-light, $lightness:15%, $alpha:-0.6);
-}
+.belt-btn.current { @include fps-graded-glass($fps-color-text-light); }
 
 #navbelt-small {
   @include fps-graded-glass($fps-color-nav-belt, $fps-color-text-light);
-  & a {color: $fps-color-text-light;}
+  & a { color: $fps-color-text-light; }
   & .left-off-canvas-toggle { margin: $global-padding; }
 }
 
@@ -109,7 +115,6 @@ h1, h2 { text-align: center; }
 
 //////////////////////////
 // page-specific
-#twitter-wrapper { text-align: center; }
 .contacts { margin-left: auto; margin-right: auto; }
 
 body.index #main-card {
@@ -129,6 +134,7 @@ body.index #main-card {
     margin: 7.5rem auto 0;
   }
 }
+
 .tagline {
   font-size: 1.5rem;
   @media #{$small-only} {
@@ -138,24 +144,6 @@ body.index #main-card {
   @media #{$medium-up} { margin-bottom: 3rem; }
 }
 .call-to-action { margin-bottom: 1rem; }
-
-.fps-frame {
-  border: 0.2rem solid $primary-color;
-  border-radius: 1rem;
-  padding: 0.5rem 1rem;
-  margin: 0 auto 2rem;
-
-  @include clearfix();
-
-  .fps-frame-picture {
-    // width: 30%;
-    margin: 0.5rem 0.4rem;
-    border-radius: 0.5rem;
-    float: right;
-  }
-
-  h4 { font-style: italic; }
-}
 
 .selling-point {
   @extend .fps-frame;
